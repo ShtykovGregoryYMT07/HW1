@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 2.8.9)
 
 project(helloworld VERSION 0.0.$ENV{GITHUB_RUN_NUMBER})
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
@@ -10,7 +10,7 @@ add_library(helloworld lib.cpp)
 add_executable(test_version test_version.cpp)
 
 set_target_properties(helloworld_cli helloworld test_version PROPERTIES
-    CXX_STANDARD 17
+    CXX_STANDARD 14
     CXX_STANDARD_REQUIRED ON
 )
 target_include_directories(helloworld
