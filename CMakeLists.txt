@@ -2,10 +2,7 @@ cmake_minimum_required(VERSION 3.2)
 
 project(helloworld VERSION 0.0.$ENV{GITHUB_RUN_NUMBER})
 find_package(Boost)
-IF (Boost_FOUND)
-    INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR})
-    ADD_DEFINITIONS( "-DHAS_BOOST" )
-ENDIF()
+
 configure_file(version.h.in version.h)
 
 add_executable(helloworld_cli main.cpp)
