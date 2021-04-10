@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.2)
 
 project(helloworld VERSION 0.0.$ENV{GITHUB_RUN_NUMBER})
-find_package(Boost)
+find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
 configure_file(version.h.in version.h)
 
