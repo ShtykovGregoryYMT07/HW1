@@ -2,18 +2,18 @@ cmake_minimum_required(VERSION 3.2)
 
 project(helloworld VERSION 0.0.$ENV{GITHUB_RUN_NUMBER})
 
-set(Boost_USE_STATIC_LIBS OFF)
+set(BOOST_ROOT "/boost")
+set(Boost_USE_STATIC_LIBS ON)
 set(SOURCE_FILES test_version.cpp)
-set(BOOST_ROOT "/boost/boost_1_71_0")
+
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
 include_directories(${Boost_INCLUDE_DIR})
+
 include_directories(../src)
 
 add_executable (Boost_Tests_run ${SOURCE_FILES})
-
-target_link_libraries (Boost_Tests_run Boost::unit_test_framework)
 
 configure_file(version.h.in version.h)
 
