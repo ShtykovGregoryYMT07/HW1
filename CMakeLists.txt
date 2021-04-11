@@ -1,15 +1,12 @@
 cmake_minimum_required(VERSION 3.2)
 
 project(helloworld VERSION 0.0.$ENV{GITHUB_RUN_NUMBER})
+find_package(Boost 1.71.0 REQUIRED COMPONENTS unit_test_framework)
+add_executable(Boost_Tests_run ${SOURCE_FILES})
+target_include_directories(Boost_Tests_run PRIVATE ${Boost_INCLUDE_DIRS})
+target_compile_definitions(Boost_Tests_run PRIVATE "BOOST_TEST_DYN_LINK=1")
+target_link_libraries(Boost_Tests_run ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
 
-set(BOOST_ROOT "/boost")
-set(Boost_USE_STATIC_LIBS ON)
-set(SOURCE_FILES test_version.cpp)
-
-find_package(Boost COMPONENTS unit_test_framework REQUIRED)
-include_directories(${Boost_INCLUDE_DIR})
-include_directories(../src)
-add_executable (Boost_Tests_run ${SOURCE_FILES})
 configure_file(version.h.in version.h)
 
 add_executable(helloworld_cli main.cpp)
