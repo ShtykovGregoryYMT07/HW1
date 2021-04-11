@@ -6,15 +6,10 @@ set(BOOST_ROOT "/boost")
 set(Boost_USE_STATIC_LIBS ON)
 set(SOURCE_FILES test_version.cpp)
 
-
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
-
 include_directories(${Boost_INCLUDE_DIR})
-
 include_directories(../src)
-
 add_executable (Boost_Tests_run ${SOURCE_FILES})
-
 configure_file(version.h.in version.h)
 
 add_executable(helloworld_cli main.cpp)
