@@ -12,6 +12,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: true
+      - run: sudo apt-get update && sudo apt-get install libboost-test-dev -y          
       - run: cmake .
       - run: cmake --build .
       - run: cmake --build . --target test
